@@ -3,58 +3,698 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yörgüç Paşa Konağı</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Yörgüç Paşa Konağı</title>
+    <style>
+      :root {
+        --golden: #d4af37; /* Premium gold color */
+        --golden-light: #e8d49f; /* Lighter gold for accents */
+        --accent: #c9b38b; /* Muted gold accent */
+        --black: #1a1a1a; /* True black for better contrast */
+        --section-bg: #f9f7f5; /* Warm off-white for sections */
+        --max-width: 1200px;
+        --blur: 12px;
+        --gap: 2rem;
+        --header-font: 'Playfair Display', serif;
+        --text-font: 'Inter', sans-serif;
+        --gold: #d4af37;
+        --gold-dark: #bfa034;
+        --primary: #47433e;
+        --primary-light: #efebe6;
+        --white: #fff;
+        --gray: #6f6f6f;
+        --shadow: 0 6px 24px rgba(126, 96, 66, 0.13);
+        --radius: 2rem;
+        --transition: 0.3s cubic-bezier(0.4, 2, 0.3, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--text-font);
+        background: linear-gradient(
+          115deg,
+          var(--white) 0%,
+          var(--section-bg) 100%
+        );
+        color: var(--black);
+        min-height: 100vh;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* Navbar */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.65);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(9px);
+        transition: background 0.4s;
+      }
+      .nav__container {
+        max-width: var(--max-width);
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 2rem;
+      }
+      .logo {
+        font-family: var(--header-font);
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        color: var(--primary);
+        line-height: 1.2;
+      }
+      .logo span {
+        font-size: 0.8rem;
+        color: var(--gray);
+        letter-spacing: 4px;
+      }
+      .nav__links {
+        display: flex;
+        gap: 2.3rem;
+        list-style: none;
+      }
+      .nav__links a {
+        font-weight: 500;
+        font-size: 1rem;
+        letter-spacing: 1.3px;
+        padding: 0.3rem 0;
+        position: relative;
+        color: var(--black);
+        transition: color 0.3s;
+      }
+      .nav__links a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 0;
+        height: 2px;
+        background: var(--golden);
+        transition: width 0.32s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      }
+      .nav__links a:hover {
+        color: var(--primary);
+      }
+      i {
+        color: var(--golden);
+      }
+      .nav__links a:hover::after {
+        width: 100%;
+      }
+      .nav__menu__btn {
+        display: none;
+        font-size: 2rem;
+        color: var(--primary);
+        cursor: pointer;
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(
+            rgba(45, 38, 30, 0.64),
+            rgba(70, 55, 30, 0.38)
+          ),
+          url('./assets/header.png') no-repeat center center/cover;
+        position: relative;
+      }
+      .hero__content {
+        padding: 6rem 1.5rem 4rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .hero__content h1 {
+        font-family: var(--header-font);
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        letter-spacing: 3px;
+        font-weight: 700;
+        color: var(--golden); /* Premium altın rengi */
+        margin-bottom: 1.8rem;
+        text-shadow: 0 2px 10px rgba(26, 20, 14, 0.42);
+        animation: fade-in-up 0.8s;
+        line-height: 1.2;
+      }
+      .hero__content p {
+        font-size: 1.4rem;
+        color: rgba(255, 255, 255, 0.93);
+        max-width: 700px;
+        margin: auto;
+        margin-bottom: 2.5rem;
+        animation: fade-in-up 1s 0.22s both;
+        opacity: 0;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        line-height: 1.7;
+      }
+      .hero__content .btn {
+        animation: fade-in-up 1s 0.42s both;
+        opacity: 0;
+        background: var(--golden);
+        color: var(--white);
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding: 1.1rem 2.5rem;
+        border: none;
+        box-shadow: 0 5px 25px rgba(212, 175, 55, 0.21);
+        transition: all 0.3s;
+      }
+      .hero__content .btn:hover {
+        background: var(--golden-light);
+        color: var(--primary);
+        box-shadow: 0 8px 30px rgba(212, 175, 55, 0.25);
+        transform: translateY(-3px) scale(1.05);
+      }
+
+      /* Section Header & Cards */
+      .section__container {
+        max-width: var(--max-width);
+        margin: auto;
+        padding: 4rem 1.2rem;
+        background: none;
+      }
+      .section__header {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.8rem;
+        color: var(--primary);
+        margin-bottom: 3rem;
+        font-weight: 700;
+      }
+      .section__subheader {
+        color: var(--gold);
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
+      .section__description {
+        font-size: 1.1rem;
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+      }
+      /* BUTTON */
+      .btn {
+        padding: 0.95rem 2.3rem;
+        font-size: 1rem;
+        font-weight: 600;
+        background: var(--primary);
+        color: var(--white);
+        border: none;
+        border-radius: var(--radius);
+        box-shadow: 0 4px 18px #c6b29921;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.23s;
+        outline: none;
+      }
+      .btn:hover {
+        background: var(--black);
+        color: var(--golden);
+        transform: translateY(-3px) scale(1.03);
+      }
+      .btn a {
+        color: inherit;
+      }
+
+      /* About */
+      .about__container {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: var(--gap);
+        align-items: center;
+      }
+      .about__image {
+        border-radius: var(--radius);
+        overflow: hidden;
+        min-height: 260px;
+        aspect-ratio: 1.1/1;
+        position: relative;
+        background: var(--primary-light);
+        box-shadow: 0 6px 24px #5c4a3a23;
+        animation: fade-in-up 1.2s;
+      }
+      .about__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+      .about__image:hover img {
+        transform: scale(1.04);
+      }
+      .about__card {
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: var(--shadow);
+        padding: 2.5rem 1.7rem;
+        text-align: center;
+        margin: 1.2rem 0;
+        transition: transform 0.23s;
+        backdrop-filter: blur(var(--blur));
+        cursor: pointer;
+      }
+      .about__card:hover {
+        transform: translateY(-7px) scale(1.03);
+      }
+      .about__card span {
+        font-size: 2.6rem;
+        color: var(--primary);
+        display: block;
+        margin-bottom: 1.1rem;
+      }
+      .about__card h4 {
+        font-family: var(--header-font);
+        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+        color: var(--primary);
+      }
+      .about__card p {
+        color: var(--gray);
+        font-size: 1rem;
+      }
+
+      /* ROOMS */
+      .room__container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 4rem 1rem 6rem 1rem;
+      }
+      .room__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2.5rem;
+      }
+      .room__card {
+        background: var(--primary-light);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform var(--transition), box-shadow var(--transition);
+        border: 1.5px solid #f2e8da;
+        position: relative;
+        min-height: 450px;
+        cursor: pointer;
+      }
+
+      .room__card:hover {
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 16px 48px rgba(212, 175, 55, 0.18);
+        border-color: var(--gold);
+      }
+
+      .room__card img {
+        width: 100%;
+        aspect-ratio: 3/2;
+        object-fit: cover;
+        object-position: center;
+        border-radius: var(--radius) var(--radius) 0 0;
+        filter: brightness(0.96);
+        transition: filter 0.35s;
+      }
+      .room__card:hover img {
+        filter: brightness(1.05) saturate(1.08);
+      }
+
+      .room__card__details {
+        padding: 2rem 1.5rem 1.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-between;
+      }
+
+      .room__card__details h4 {
+        font-size: 1.35rem;
+        color: var(--primary);
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 0.5px;
+      }
+
+      .room__card__details p {
+        color: var(--gray);
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 1.7rem;
+        min-height: 95px;
+        letter-spacing: 0.1px;
+      }
+
+      .room__card__details h3 {
+        color: var(--gold-dark);
+        font-size: 2rem;
+        font-family: 'Playfair Display', serif;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+        margin-bottom: 0.25rem;
+        display: flex;
+        align-items: baseline;
+        gap: 0.3em;
+      }
+
+      .room__card__details h3 span {
+        font-size: 1.1rem;
+        color: #98824e;
+        font-weight: 400;
+        margin-left: 0.3rem;
+      }
+      /* Features */
+      .feature__grid {
+        display: grid;
+        gap: var(--gap);
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        margin-top: 2.5rem;
+      }
+      .feature__card {
+        padding: 2rem 1.3rem;
+
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.99);
+        box-shadow: var(--shadow);
+        transition: transform 0.22s;
+        text-align: center;
+        min-height: 180px;
+        cursor: pointer;
+      }
+      .feature__card:hover {
+        transform: scale(1.04);
+      }
+      .feature__card span {
+        font-size: 2.5rem;
+        color: var(--primary);
+      }
+      .feature__card h4 {
+        color: var(--primary);
+        font-family: var(--header-font);
+        margin: 0.8rem 0 0.6rem 0;
+      }
+      .feature__card p {
+        color: var(--gray);
+        font-size: 0.98rem;
+      }
+
+      /* News (Amasya Guide) */
+      .news__grid {
+        display: grid;
+        gap: var(--gap);
+        margin-top: 2.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      }
+      .news__card {
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.18s;
+        cursor: pointer;
+      }
+      .news__card div {
+        margin-bottom: 1rem;
+      }
+      .news__card:hover {
+        transform: scale(1.04);
+      }
+      .news__card img {
+        height: 170px;
+        object-fit: cover;
+        width: 100%;
+      }
+      .news__card__title {
+        padding: 1.3rem 1.3rem 0;
+      }
+      .news__card__title h4 {
+        font-family: var(--header-font);
+        font-size: 1.1rem;
+        color: var(--primary);
+      }
+      .news__card p {
+        color: var(--gray);
+        font-size: 0.97rem;
+        padding: 0 1.3rem 1.3rem;
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--black);
+        color: rgba(255, 255, 255, 0.9);
+        border-top: 3px solid var(--golden);
+      }
+
+      .footer__container {
+        display: grid;
+        gap: var(--gap);
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding-bottom: 2.5rem;
+      }
+
+      .footer__col {
+        margin-top: 1.5rem;
+      }
+
+      .footer__logo {
+        font-family: var(--header-font);
+        font-size: 1.8rem;
+        color: var(--golden); /* Altın rengi */
+        margin-bottom: 1.5rem;
+        letter-spacing: 1px;
+      }
+      .footer__col ul li div {
+        display: flex;
+      }
+      .footer__logo div {
+        display: inline-block;
+        font-size: 2rem;
+        border: 2px solid var(--golden); /* Altın rengi */
+        border-radius: 50%;
+        padding: 0.3rem 1.2rem;
+        margin-right: 1rem;
+        color: var(--golden); /* Altın rengi */
+        transition: all 0.3s;
+      }
+
+      .footer__logo:hover div {
+        background: var(--golden);
+        color: #1a1a1a;
+      }
+
+      .footer__socials {
+        display: flex;
+        gap: 1.1rem;
+        list-style: none;
+        margin-top: 1.8rem;
+      }
+
+      .footer__socials a {
+        background: rgba(212, 175, 55, 0.1); /* Altın rengi opak */
+        border: 1px solid rgba(212, 175, 55, 0.3); /* Altın rengi çerçeve */
+        border-radius: 50%;
+        width: 42px;
+        height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--golden); /* Altın rengi */
+        font-size: 1.3rem;
+        transition: all 0.3s;
+      }
+
+      .footer__socials a:hover {
+        background: var(--golden); /* Altın rengi */
+        color: #1a1a1a;
+        transform: translateY(-3px);
+      }
+
+      .footer__links {
+        list-style: none;
+      }
+
+      .footer__links li {
+        margin-bottom: 0.9rem;
+        transition: transform 0.3s;
+      }
+
+      .footer__links li:hover {
+        transform: translateX(5px);
+      }
+
+      .footer__links span {
+        font-size: 1.2rem;
+        margin-right: 0.7rem;
+        vertical-align: middle;
+        color: var(--golden); /* Altın rengi */
+      }
+      .footer h4 {
+        margin-bottom: 1.2rem;
+        font-size: 1.3rem;
+        color: var(--golden); /* Altın rengi */
+      }
+      .footer__links h5 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        color: var(--golden); /* Altın rengi */
+      }
+
+      .footer__links a {
+        color: rgba(255, 255, 255, 0.8);
+        transition: color 0.3s;
+      }
+
+      .footer__links a:hover {
+        color: var(--golden); /* Altın rengi */
+      }
+
+      .footer__bar {
+        text-align: center;
+        font-size: 0.9rem;
+        padding: 1.5rem 1rem;
+        border-top: 1px solid rgba(212, 175, 55, 0.2); /* Altın rengi opak */
+        color: rgba(255, 255, 255, 0.6);
+        letter-spacing: 0.5px;
+      }
+
+      /* Mobile Menu */
+      @media (max-width: 900px) {
+        .about__container {
+          grid-template-columns: 1fr;
+          gap: 1.3rem;
+        }
+        .about__image,
+        .about__card {
+          margin: 0.7rem 0;
+        }
+      }
+      @media (max-width: 768px) {
+        .nav__links {
+          position: fixed;
+          top: 78px;
+          left: -100vw;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.98);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 2.5rem;
+          z-index: 99;
+          transition: left 0.4s cubic-bezier(0.61, 0.23, 0.45, 1.01);
+        }
+        .nav__links.active {
+          left: 0;
+        }
+        .nav__menu__btn {
+          display: block;
+        }
+        .nav__container {
+          padding: 1.2rem 1rem;
+        }
+        .section__header {
+          font-size: 2rem;
+        }
+        .room__card__details {
+          padding: 1.2rem;
+        }
+        .room__card__details p {
+          min-height: unset;
+        }
+        .room__grid {
+          gap: 1.2rem;
+        }
+      }
+      @media (max-width: 530px) {
+        .section__header {
+          font-size: 2rem;
+        }
+        .nav__container {
+          padding: 1.2rem 0.5rem;
+        }
+      }
+
+      @keyframes fade-in-up {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
   </head>
   <body>
-    <nav>
-      <div class="nav__bar">
-        <div class="nav__header">
-          <div class="logo nav__logo">
-            <span>YÖRGÜÇ PAŞA<br />KONAĞI</span>
-          </div>
-          <div class="nav__menu__btn" id="menu-btn">
-            <i class="ri-menu-line"></i>
-          </div>
-        </div>
+    <nav id="navbar">
+      <div class="nav__container">
+        <div class="logo">YÖRGÜÇ PAŞA<br /><span>KONAĞI</span></div>
         <ul class="nav__links" id="nav-links">
           <li><a href="#home">Anasayfa</a></li>
           <li><a href="#about">Hakkımızda</a></li>
           <li><a href="#room">Odalar</a></li>
           <li><a href="#feature">Özellikler</a></li>
-          <li><a href="#menu">Menü</a></li>
           <li><a href="#news">Rehber</a></li>
         </ul>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
       </div>
     </nav>
 
-    <header class="header" id="home">
-      <div class="section__container header__container">
-        <p class="section__subheader">YÖRGÜÇ PAŞA KONAĞI</p>
-        <h1>Tarihin Kalbinde<br />Huzurlu Bir Konaklama</h1>
+    <section class="hero" id="home">
+      <div class="hero__content">
+        <h1>Tarihin Kalbinde <br />Huzurlu Bir Konaklama</h1>
+        <p>
+          Osmanlı mimarisinin zarafeti ve Amasya'nın eşsiz atmosferiyle modern
+          konfor bir arada. Yörgüç Paşa Konağı'nda sizi bekliyor.
+        </p>
         <button class="btn">
-          <a href="tel:+903120000000">Rezervasyon Yap</a>
+          <a href="tel:+905519081005">Rezervasyon Yap</a>
         </button>
       </div>
-    </header>
+    </section>
 
-    <section class="about" id="about">
-      <div class="section__container about__container">
-        <div class="about__grid">
+    <section class="about section__container" id="about">
+      <div class="about__container">
+        <div>
           <div class="about__image">
-            <img src="assets/about-1.jpg" alt="hakkimizda" />
+            <img src="./assets/about-2.png" alt="hakkimizda" />
           </div>
+        </div>
+        <div>
           <div class="about__card">
             <span><i class="ri-user-line"></i></span>
             <h4>Tecrübeli Ekibimiz</h4>
             <p>Misafir memnuniyetini ön planda tutan profesyonel kadro.</p>
-          </div>
-          <div class="about__image">
-            <img src="assets/about-2.jpg" alt="hakkimizda" />
           </div>
           <div class="about__card">
             <span><i class="ri-calendar-check-line"></i></span>
@@ -62,84 +702,81 @@
             <p>Osmanlı mimarisinin estetiğiyle tasarlanmış eşsiz odalar.</p>
           </div>
         </div>
-        <div class="about__content">
-          <p class="section__subheader">HAKKIMIZDA</p>
-          <h2 class="section__header">Yörgüç Paşa Konağı'na Hoşgeldiniz</h2>
-          <p class="section__description">
-            Yüzlerce yıllık tarihe tanıklık eden konağımız, sizi geleneksel
-            Osmanlı konukseverliğiyle ağırlamaktan gurur duyar.
-          </p>
-          <button class="btn">
-            <a href="tel:+903120000000">Rezervasyon Yap</a>
-          </button>
-        </div>
+      </div>
+      <div style="margin-top: 2.7rem">
+        <p class="section__subheader">HAKKIMIZDA</p>
+        <h2 class="section__header">Yörgüç Paşa Konağı'na Hoşgeldiniz</h2>
+        <p class="section__description">
+          Yüzlerce yıllık tarihe tanıklık eden konağımız, sizi geleneksel
+          Osmanlı konukseverliğiyle ağırlamaktan gurur duyar. Restore edilmiş
+          tarihi dokusuyla modern konforu bir arada sunuyoruz.
+        </p>
+        <button class="btn">
+          <a href="tel:+905519081005">Rezervasyon Yap</a>
+        </button>
       </div>
     </section>
 
-    <section class="room__container" id="room">
+    <section class="room__container section__container" id="room">
       <p class="section__subheader">ODALAR</p>
       <h2 class="section__header">Seçkin Oda Seçenekleri</h2>
       <div class="room__grid">
         <div class="room__card">
-          <img src="assets/room-1.jpg" alt="oda" />
+          <img src="./assets/room-1.png" alt="Standart Çift Kişilik Oda" />
           <div class="room__card__details">
-            <div>
-              <h4>Deluxe Süit</h4>
-              <p>
-                Daha fazla konfor isteyen misafirlerimiz için özel olarak
-                tasarlandı.
-              </p>
-            </div>
-            <h3>₺399<span>/gece</span></h3>
+            <h4>Standart Çift Kişilik Oda</h4>
+            <p>
+              Konforlu bir konaklama deneyimi arayan çiftler için idealdir.<br />
+              2 kişiye kadar konaklama imkanı.<br />
+              Manzaralı, ferah odalar. <br />
+            </p>
+
+            <h3>₺1750<span>/gece</span></h3>
           </div>
         </div>
         <div class="room__card">
-          <img src="assets/room-2.jpg" alt="oda" />
+          <img src="./assets/room-2.png" alt="Aile Süiti (4 Kişilik)" />
           <div class="room__card__details">
-            <div>
-              <h4>Aile Süiti</h4>
-              <p>Geniş aileler için birden fazla oda ve ortak yaşam alanı.</p>
-            </div>
-            <h3>₺599<span>/gece</span></h3>
+            <h4>Aile Süiti</h4>
+            <p>
+              Geniş aileler için birden fazla oda ve ortak yaşam alanı.<br />
+              4 kişiye kadar konaklama imkanı.<br />
+              Mini mutfak ve mutfak gereçleri mevcuttur.<br />
+              Irmak kenarı manzaralı.
+            </p>
+            <h3>₺3750<span>/gece</span></h3>
           </div>
         </div>
         <div class="room__card">
-          <img src="assets/room-3.jpg" alt="oda" />
+          <img src="./assets/room-3.png" alt="1+0 Oda (7 Kişilik)" />
           <div class="room__card__details">
-            <div>
-              <h4>Lüks Penthouse</h4>
-              <p>
-                En üst katta yer alan, manzaralı ve özel hizmetli konaklama
-                deneyimi.
-              </p>
-            </div>
-            <h3>₺799<span>/gece</span></h3>
+            <h4>1+0 Oda</h4>
+            <p>
+              7 kişiye kadar konaklama kapasitesi.<br />
+              Geniş ve ferah tasarım.<br />
+              Tam donanımlı mini mutfak, gerekli tüm araç gereçlerle.<br />
+              Irmak kenarı manzaralı.
+            </p>
+            <h3>₺4000<span>/gece</span></h3>
+          </div>
+        </div>
+        <div class="room__card">
+          <img src="./assets/room-4.png" alt="2+1 Oda (12 Kişilik)" />
+          <div class="room__card__details">
+            <h4>2+1 Oda</h4>
+            <p>
+              Kalabalık aile veya arkadaş grupları için idealdir.<br />
+              12 kişiye kadar konaklama imkanı.<br />
+              Geniş oturma alanı, tam donanımlı mutfak.<br />
+              Irmak kenarı manzaralı.
+            </p>
+            <h3>₺6500<span>/gece</span></h3>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="intro">
-      <div class="section__container intro__container">
-        <div class="intro__cotent">
-          <p class="section__subheader">TANITIM VİDEOSU</p>
-          <h2 class="section__header">Yörgüç Paşa Konağı ile Tanışın</h2>
-          <p class="section__description">
-            Huzurlu bir kaçamak ya da tarihi bir keşif arayanlar için unutulmaz
-            bir deneyim sunuyoruz. Konağımızda tarihin izleriyle huzuru bir
-            arada bulacaksınız.
-          </p>
-          <button class="btn">
-            <a href="tel:+903120000000">Rezervasyon Yap</a>
-          </button>
-        </div>
-        <div class="intro__video">
-          <video src="assets/luxury.mp4" autoplay muted loop></video>
-        </div>
-      </div>
-    </section>
-
-    <section class="section__container feature__container" id="feature">
+    <section class="feature__container section__container" id="feature">
       <p class="section__subheader">ÖZELLİKLER</p>
       <h2 class="section__header">Temel Hizmetlerimiz</h2>
       <div class="feature__grid">
@@ -186,100 +823,15 @@
       </div>
     </section>
 
-    <section class="menu" id="menu">
-      <div class="section__container menu__container">
-        <div class="menu__header">
-          <div>
-            <p class="section__subheader">MENÜ</p>
-            <h2 class="section__header">Yöresel Lezzetler</h2>
-          </div>
-        </div>
-        <ul class="menu__items">
-          <li>
-            <img src="assets/menu-1.jpg" alt="menü" />
-            <div class="menu__details">
-              <h4>Köy Kahvaltısı</h4>
-              <p>Doğal ürünlerle hazırlanan geleneksel kahvaltı tabağı.</p>
-            </div>
-          </li>
-          <li>
-            <img src="assets/menu-2.jpg" alt="menü" />
-            <div class="menu__details">
-              <h4>Çay & Kahve</h4>
-              <p>Gün boyu servis edilen sıcak içeceklerimizle keyifli anlar.</p>
-            </div>
-          </li>
-          <li>
-            <img src="assets/menu-3.jpg" alt="menü" />
-            <div class="menu__details">
-              <h4>Yöresel Çorba</h4>
-              <p>Her gün taze olarak hazırlanan yerel tarifli çorbalar.</p>
-            </div>
-          </li>
-          <li>
-            <img src="assets/menu-4.jpg" alt="menü" />
-            <div class="menu__details">
-              <h4>Mevsim Salata</h4>
-              <p>Taze yeşilliklerle hazırlanan hafif ve sağlıklı salatalar.</p>
-            </div>
-          </li>
-          <li>
-            <img src="assets/menu-5.jpg" alt="menü" />
-            <div class="menu__details">
-              <h4>Reçel Seçkisi</h4>
-              <p>El yapımı meyve reçelleriyle zenginleştirilmiş kahvaltılar.</p>
-            </div>
-          </li>
-          <li>
-            <img src="assets/menu-6.jpg" alt="menü" />
-            <div class="menu__details">
-              <h4>Peynir Tabağı</h4>
-              <p>Anadolu'nun farklı yörelerinden seçilmiş peynir çeşitleri.</p>
-            </div>
-          </li>
-        </ul>
-        <div class="menu__images">
-          <img src="assets/menu-7.jpg" alt="menü" />
-          <img src="assets/menu-8.jpg" alt="menü" />
-          <img src="assets/menu-9.jpg" alt="menü" />
-        </div>
-        <ul class="menu__banner">
-          <li>
-            <span><i class="ri-file-text-line"></i></span>
-            <h4>250+</h4>
-            <p>Mutlu Misafir Yorumu</p>
-          </li>
-          <li>
-            <span><i class="ri-user-line"></i></span>
-            <h4>3K+</h4>
-            <p>Yıllık Ziyaretçi</p>
-          </li>
-          <li>
-            <span><i class="ri-function-line"></i></span>
-            <h4>50+</h4>
-            <p>Etkinlik ve Organizasyon</p>
-          </li>
-          <li>
-            <span><i class="ri-lightbulb-flash-line"></i></span>
-            <h4>100%</h4>
-            <p>Misafir Memnuniyeti</p>
-          </li>
-        </ul>
+    <section class="news__container section__container" id="news">
+      <div>
+        <p class="section__subheader">AMASYA REHBERİ</p>
+        <h2 class="section__header">Gezilecek Yerler</h2>
       </div>
-    </section>
-
-    <section class="section__container news__container" id="news">
-      <div class="news__header">
-        <div>
-          <p class="section__subheader">AMASYA REHBERİ</p>
-          <h2 class="section__header">Gezilecek Yerler</h2>
-        </div>
-      </div>
-
       <div class="news__grid">
         <div class="news__card">
           <img
-            src="assets/news-1.jpg"
+            src="./assets/news-1.jpg"
             alt="Harşena Dağı ve Kral Kaya Mezarları"
           />
           <div class="news__card__title">
@@ -291,10 +843,9 @@
             vazgeçilmez bir rota.
           </p>
         </div>
-
         <div class="news__card">
           <img
-            src="assets/news-2.webp"
+            src="./assets/news-2.webp"
             alt="Yeşilırmak Kenarı ve Yalıboyu Evleri"
           />
           <div class="news__card__title">
@@ -305,9 +856,8 @@
             Akşamüstü yürüyüşleri ve manzara için en ideal noktalardan biridir.
           </p>
         </div>
-
         <div class="news__card">
-          <img src="assets/news-3.png" alt="Yörgüç Paşa Camii ve Medresesi" />
+          <img src="./assets/news-3.png" alt="Yörgüç Paşa Camii ve Medresesi" />
           <div class="news__card__title">
             <h4>Yörgüç Paşa Camii ve Medresesi</h4>
           </div>
@@ -322,13 +872,14 @@
     <footer class="footer">
       <div class="section__container footer__container">
         <div class="footer__col">
-          <div class="logo footer__logo">
+          <div class="footer__logo">
             <div>Y</div>
-            <span>YÖRGÜÇ PAŞA<br />KONAĞI</span>
+            YÖRGÜÇ PAŞA KONAĞI
           </div>
           <p class="section__description">
-            Bu site Bilgi Byte | Bilişim ve Teknoloji tarafından hazırlanmıştır.
-            Konağımız tarih ve konforu bir araya getirerek sizleri bekliyor.
+            Bu site <b>Bilgi Byte | Bilişim ve Teknoloji</b> tarafından
+            hazırlanmıştır. Konağımız tarih ve konforu bir araya getirerek
+            sizleri bekliyor.
           </p>
           <ul class="footer__socials">
             <li>
@@ -347,42 +898,40 @@
         </div>
         <div class="footer__col">
           <h4>Hizmetler</h4>
-          <div class="footer__links">
+          <ul class="footer__links">
             <li><a href="#">Online Rezervasyon</a></li>
             <li><a href="#">Oda Seçenekleri</a></li>
             <li><a href="#">Sanal Tur</a></li>
             <li><a href="#">Özel Teklifler</a></li>
             <li><a href="#">Danışma Hizmeti</a></li>
             <li><a href="#">Müşteri Desteği</a></li>
-          </div>
+          </ul>
         </div>
         <div class="footer__col">
           <h4>İletişim</h4>
-          <div class="footer__links">
+          <ul class="footer__links">
             <li>
-              <span><i class="ri-phone-fill"></i></span>
               <div>
+                <span><i class="ri-phone-fill"></i></span>
                 <h5>Telefon</h5>
-                <a href="tel:+903120000000">+90 312 000 00 00</a>
               </div>
+              <a href="tel:+905519081005">+90 551 908 10 05</a>
             </li>
             <li>
-              <span><i class="ri-record-mail-line"></i></span>
               <div>
+                <span><i class="ri-record-mail-line"></i></span>
                 <h5>E-posta</h5>
-                <a href="mailto:yorgucpasa05@gmail.com"
-                  >yorgucpasa05@gmail.com</a
-                >
               </div>
+              <a href="mailto:yorgucpasa05@gmail.com">yorgucpasa05@gmail.com</a>
             </li>
             <li>
-              <span><i class="ri-map-pin-2-fill"></i></span>
               <div>
+                <span><i class="ri-map-pin-2-fill"></i></span>
                 <h5>Adres</h5>
-                <p>Hatuniye, Derya Sk. No:13 Merkez/Amasya</p>
               </div>
+              <p>Hatuniye, Derya Sk. No:13 Merkez/Amasya</p>
             </li>
-          </div>
+          </ul>
         </div>
       </div>
       <div class="footer__bar">
@@ -390,7 +939,41 @@
       </div>
     </footer>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="main.js"></script>
+    <script>
+      // Navbar scroll effect
+      window.addEventListener('scroll', function () {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 40)
+          navbar.style.background = 'rgba(255,255,255,0.97)';
+        else navbar.style.background = 'rgba(255,255,255,0.65)';
+      });
+
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('menu-btn');
+      const navLinks = document.getElementById('nav-links');
+      menuBtn.addEventListener('click', function () {
+        navLinks.classList.toggle('active');
+      });
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.nav__links a').forEach((link) => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+        });
+      });
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 85,
+              behavior: 'smooth',
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
