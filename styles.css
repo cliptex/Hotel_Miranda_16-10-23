@@ -20,6 +20,7 @@
 .section__container {
   max-width: var(--max-width);
   margin: auto;
+  margin-top: 4rem;
   padding: 5rem 1rem;
 }
 
