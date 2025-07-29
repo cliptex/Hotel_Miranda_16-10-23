@@ -802,3 +802,15 @@ nav {
     gap: 2rem;
   }
 }
+.news__card img {
+  width: 250px;
+  height: 300px;
+  object-fit: cover;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+
+}
+.btn a {
+  color: var(--white);
+  text-decoration: none;
+}
