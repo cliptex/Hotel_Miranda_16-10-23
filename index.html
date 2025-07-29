@@ -3,7 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yörgüç Paşa Konağı</title>
+    <title>Yörgüç Paşa Konağı | Amasya Otel | Tarihi Konaklama</title>
+    <meta
+      name="description"
+      content="Yörgüç Paşa Konağı, Amasya'nın merkezinde, tarihi atmosferi ve modern konforu bir araya getiren, manzaralı, mutfaklı odalara sahip seçkin bir oteldir. Şimdi online rezervasyon yapın!"
+    />
+    <meta
+      name="keywords"
+      content="Amasya otel, tarihi konak, butik otel, Yörgüç Paşa Konağı, konaklama, oda, rezervasyon, Amasya otelleri, günlük kiralık daire, aile oteli, romantik kaçamak, tarihi konaklama"
+    />
+    <meta name="author" content="Yörgüç Paşa Konağı" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.yorgucpasakonagi.com/" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Yörgüç Paşa Konağı | Amasya Otel" />
+    <meta
+      property="og:description"
+      content="Tarihi ve modern konforu bir araya getiren Amasya'nın seçkin konağı. Şimdi rezervasyon yapın!"
+    />
+    <meta
+      property="og:image"
+      content="https://www.yorgucpasakonagi.com/assets/og-image.jpg"
+    />
+    <meta property="og:url" content="https://www.yorgucpasakonagi.com/" />
+    <meta property="og:site_name" content="Yörgüç Paşa Konağı" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yörgüç Paşa Konağı | Amasya Otel" />
+    <meta
+      name="twitter:description"
+      content="Tarihi ve modern konfor bir arada. Yörgüç Paşa Konağı'nda eşsiz bir konaklama deneyimi sizi bekliyor."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.yorgucpasakonagi.com/assets/og-image.jpg"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+
+    <!-- Preload Resources -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap"
+      as="style"
+    />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      as="style"
+    />
+    <link rel="preload" href="./assets/header.png" as="image" />
+
+    <!-- Fonts & Icons -->
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap"
       rel="stylesheet"
@@ -12,646 +68,45 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <style>
-      :root {
-        --golden: #d4af37; /* Premium gold color */
-        --golden-light: #e8d49f; /* Lighter gold for accents */
-        --accent: #c9b38b; /* Muted gold accent */
-        --black: #1a1a1a; /* True black for better contrast */
-        --section-bg: #f9f7f5; /* Warm off-white for sections */
-        --max-width: 1200px;
-        --blur: 12px;
-        --gap: 2rem;
-        --header-font: 'Playfair Display', serif;
-        --text-font: 'Inter', sans-serif;
-        --gold: #d4af37;
-        --gold-dark: #bfa034;
-        --primary: #47433e;
-        --primary-light: #efebe6;
-        --white: #fff;
-        --gray: #6f6f6f;
-        --shadow: 0 6px 24px rgba(126, 96, 66, 0.13);
-        --radius: 2rem;
-        --transition: 0.3s cubic-bezier(0.4, 2, 0.3, 1);
-      }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: var(--text-font);
-        background: linear-gradient(
-          115deg,
-          var(--white) 0%,
-          var(--section-bg) 100%
-        );
-        color: var(--black);
-        min-height: 100vh;
-      }
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      /* Navbar */
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 20;
-        background: rgba(255, 255, 255, 0.65);
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(9px);
-        transition: background 0.4s;
-      }
-      .nav__container {
-        max-width: var(--max-width);
-        margin: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1.5rem 2rem;
-      }
-      .logo {
-        font-family: var(--header-font);
-        font-size: 2rem;
-        font-weight: 700;
-        letter-spacing: 3px;
-        color: var(--primary);
-        line-height: 1.2;
-      }
-      .logo span {
-        font-size: 0.8rem;
-        color: var(--gray);
-        letter-spacing: 4px;
-      }
-      .nav__links {
-        display: flex;
-        gap: 2.3rem;
-        list-style: none;
-      }
-      .nav__links a {
-        font-weight: 500;
-        font-size: 1rem;
-        letter-spacing: 1.3px;
-        padding: 0.3rem 0;
-        position: relative;
-        color: var(--black);
-        transition: color 0.3s;
-      }
-      .nav__links a::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -3px;
-        width: 0;
-        height: 2px;
-        background: var(--golden);
-        transition: width 0.32s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-      }
-      .nav__links a:hover {
-        color: var(--primary);
-      }
-      i {
-        color: var(--golden);
-      }
-      .nav__links a:hover::after {
-        width: 100%;
-      }
-      .nav__menu__btn {
-        display: none;
-        font-size: 2rem;
-        color: var(--primary);
-        cursor: pointer;
-      }
-
-      /* HERO */
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        background: linear-gradient(
-            rgba(45, 38, 30, 0.64),
-            rgba(70, 55, 30, 0.38)
-          ),
-          url('./assets/header.png') no-repeat center center/cover;
-        position: relative;
-      }
-      .hero__content {
-        padding: 6rem 1.5rem 4rem;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      .hero__content h1 {
-        font-family: var(--header-font);
-        font-size: clamp(2.5rem, 6vw, 4.5rem);
-        letter-spacing: 3px;
-        font-weight: 700;
-        color: var(--golden); /* Premium altın rengi */
-        margin-bottom: 1.8rem;
-        text-shadow: 0 2px 10px rgba(26, 20, 14, 0.42);
-        animation: fade-in-up 0.8s;
-        line-height: 1.2;
-      }
-      .hero__content p {
-        font-size: 1.4rem;
-        color: rgba(255, 255, 255, 0.93);
-        max-width: 700px;
-        margin: auto;
-        margin-bottom: 2.5rem;
-        animation: fade-in-up 1s 0.22s both;
-        opacity: 0;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        line-height: 1.7;
-      }
-      .hero__content .btn {
-        animation: fade-in-up 1s 0.42s both;
-        opacity: 0;
-        background: var(--golden);
-        color: var(--white);
-        font-weight: 700;
-        letter-spacing: 1px;
-        padding: 1.1rem 2.5rem;
-        border: none;
-        box-shadow: 0 5px 25px rgba(212, 175, 55, 0.21);
-        transition: all 0.3s;
-      }
-      .hero__content .btn:hover {
-        background: var(--golden-light);
-        color: var(--primary);
-        box-shadow: 0 8px 30px rgba(212, 175, 55, 0.25);
-        transform: translateY(-3px) scale(1.05);
-      }
-
-      /* Section Header & Cards */
-      .section__container {
-        max-width: var(--max-width);
-        margin: auto;
-        padding: 4rem 1.2rem;
-        background: none;
-      }
-      .section__header {
-        font-family: 'Playfair Display', serif;
-        font-size: 2.8rem;
-        color: var(--primary);
-        margin-bottom: 3rem;
-        font-weight: 700;
-      }
-      .section__subheader {
-        color: var(--gold);
-        font-weight: 600;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 0.5rem;
-      }
-      .section__description {
-        font-size: 1.1rem;
-        color: var(--gray);
-        margin-bottom: 1.5rem;
-        line-height: 1.8;
-      }
-      /* BUTTON */
-      .btn {
-        padding: 0.95rem 2.3rem;
-        font-size: 1rem;
-        font-weight: 600;
-        background: var(--primary);
-        color: var(--white);
-        border: none;
-        border-radius: var(--radius);
-        box-shadow: 0 4px 18px #c6b29921;
-        cursor: pointer;
-        transition: background 0.3s, transform 0.23s;
-        outline: none;
-      }
-      .btn:hover {
-        background: var(--black);
-        color: var(--golden);
-        transform: translateY(-3px) scale(1.03);
-      }
-      .btn a {
-        color: inherit;
-      }
-
-      /* About */
-      .about__container {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: var(--gap);
-        align-items: center;
-      }
-      .about__image {
-        border-radius: var(--radius);
-        overflow: hidden;
-        min-height: 260px;
-        aspect-ratio: 1.1/1;
-        position: relative;
-        background: var(--primary-light);
-        box-shadow: 0 6px 24px #5c4a3a23;
-        animation: fade-in-up 1.2s;
-      }
-      .about__image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s;
-      }
-      .about__image:hover img {
-        transform: scale(1.04);
-      }
-      .about__card {
-        border-radius: var(--radius);
-        background: rgba(255, 255, 255, 0.94);
-        box-shadow: var(--shadow);
-        padding: 2.5rem 1.7rem;
-        text-align: center;
-        margin: 1.2rem 0;
-        transition: transform 0.23s;
-        backdrop-filter: blur(var(--blur));
-        cursor: pointer;
-      }
-      .about__card:hover {
-        transform: translateY(-7px) scale(1.03);
-      }
-      .about__card span {
-        font-size: 2.6rem;
-        color: var(--primary);
-        display: block;
-        margin-bottom: 1.1rem;
-      }
-      .about__card h4 {
-        font-family: var(--header-font);
-        font-size: 1.2rem;
-        margin-bottom: 0.4rem;
-        color: var(--primary);
-      }
-      .about__card p {
-        color: var(--gray);
-        font-size: 1rem;
-      }
-
-      /* ROOMS */
-      .room__container {
-        max-width: var(--max-width);
-        margin: 0 auto;
-        padding: 4rem 1rem 6rem 1rem;
-      }
-      .room__grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2.5rem;
-      }
-      .room__card {
-        background: var(--primary-light);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        transition: transform var(--transition), box-shadow var(--transition);
-        border: 1.5px solid #f2e8da;
-        position: relative;
-        min-height: 450px;
-        cursor: pointer;
-      }
-
-      .room__card:hover {
-        transform: translateY(-12px) scale(1.03);
-        box-shadow: 0 16px 48px rgba(212, 175, 55, 0.18);
-        border-color: var(--gold);
-      }
-
-      .room__card img {
-        width: 100%;
-        aspect-ratio: 3/2;
-        object-fit: cover;
-        object-position: center;
-        border-radius: var(--radius) var(--radius) 0 0;
-        filter: brightness(0.96);
-        transition: filter 0.35s;
-      }
-      .room__card:hover img {
-        filter: brightness(1.05) saturate(1.08);
-      }
-
-      .room__card__details {
-        padding: 2rem 1.5rem 1.5rem 1.5rem;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        justify-content: space-between;
-      }
-
-      .room__card__details h4 {
-        font-size: 1.35rem;
-        color: var(--primary);
-        font-weight: 700;
-        margin-bottom: 0.7rem;
-        font-family: 'Playfair Display', serif;
-        letter-spacing: 0.5px;
-      }
-
-      .room__card__details p {
-        color: var(--gray);
-        font-size: 1rem;
-        line-height: 1.7;
-        margin-bottom: 1.7rem;
-        min-height: 95px;
-        letter-spacing: 0.1px;
-      }
-
-      .room__card__details h3 {
-        color: var(--gold-dark);
-        font-size: 2rem;
-        font-family: 'Playfair Display', serif;
-        font-weight: 900;
-        letter-spacing: 1.5px;
-        margin-bottom: 0.25rem;
-        display: flex;
-        align-items: baseline;
-        gap: 0.3em;
-      }
-
-      .room__card__details h3 span {
-        font-size: 1.1rem;
-        color: #98824e;
-        font-weight: 400;
-        margin-left: 0.3rem;
-      }
-      /* Features */
-      .feature__grid {
-        display: grid;
-        gap: var(--gap);
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        margin-top: 2.5rem;
-      }
-      .feature__card {
-        padding: 2rem 1.3rem;
-
-        border-radius: var(--radius);
-        background: rgba(255, 255, 255, 0.99);
-        box-shadow: var(--shadow);
-        transition: transform 0.22s;
-        text-align: center;
-        min-height: 180px;
-        cursor: pointer;
-      }
-      .feature__card:hover {
-        transform: scale(1.04);
-      }
-      .feature__card span {
-        font-size: 2.5rem;
-        color: var(--primary);
-      }
-      .feature__card h4 {
-        color: var(--primary);
-        font-family: var(--header-font);
-        margin: 0.8rem 0 0.6rem 0;
-      }
-      .feature__card p {
-        color: var(--gray);
-        font-size: 0.98rem;
-      }
-
-      /* News (Amasya Guide) */
-      .news__grid {
-        display: grid;
-        gap: var(--gap);
-        margin-top: 2.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      }
-      .news__card {
-        border-radius: var(--radius);
-        overflow: hidden;
-        background: rgba(255, 255, 255, 0.98);
-        box-shadow: var(--shadow);
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.18s;
-        cursor: pointer;
-      }
-      .news__card div {
-        margin-bottom: 1rem;
-      }
-      .news__card:hover {
-        transform: scale(1.04);
-      }
-      .news__card img {
-        height: 170px;
-        object-fit: cover;
-        width: 100%;
-      }
-      .news__card__title {
-        padding: 1.3rem 1.3rem 0;
-      }
-      .news__card__title h4 {
-        font-family: var(--header-font);
-        font-size: 1.1rem;
-        color: var(--primary);
-      }
-      .news__card p {
-        color: var(--gray);
-        font-size: 0.97rem;
-        padding: 0 1.3rem 1.3rem;
-      }
-
-      /* Footer */
-      .footer {
-        background: var(--black);
-        color: rgba(255, 255, 255, 0.9);
-        border-top: 3px solid var(--golden);
-      }
-
-      .footer__container {
-        display: grid;
-        gap: var(--gap);
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        padding-bottom: 2.5rem;
-      }
-
-      .footer__col {
-        margin-top: 1.5rem;
-      }
-
-      .footer__logo {
-        font-family: var(--header-font);
-        font-size: 1.8rem;
-        color: var(--golden); /* Altın rengi */
-        margin-bottom: 1.5rem;
-        letter-spacing: 1px;
-      }
-      .footer__col ul li div {
-        display: flex;
-      }
-      .footer__logo div {
-        display: inline-block;
-        font-size: 2rem;
-        border: 2px solid var(--golden); /* Altın rengi */
-        border-radius: 50%;
-        padding: 0.3rem 1.2rem;
-        margin-right: 1rem;
-        color: var(--golden); /* Altın rengi */
-        transition: all 0.3s;
-      }
-
-      .footer__logo:hover div {
-        background: var(--golden);
-        color: #1a1a1a;
-      }
-
-      .footer__socials {
-        display: flex;
-        gap: 1.1rem;
-        list-style: none;
-        margin-top: 1.8rem;
-      }
-
-      .footer__socials a {
-        background: rgba(212, 175, 55, 0.1); /* Altın rengi opak */
-        border: 1px solid rgba(212, 175, 55, 0.3); /* Altın rengi çerçeve */
-        border-radius: 50%;
-        width: 42px;
-        height: 42px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--golden); /* Altın rengi */
-        font-size: 1.3rem;
-        transition: all 0.3s;
-      }
-
-      .footer__socials a:hover {
-        background: var(--golden); /* Altın rengi */
-        color: #1a1a1a;
-        transform: translateY(-3px);
-      }
-
-      .footer__links {
-        list-style: none;
-      }
-
-      .footer__links li {
-        margin-bottom: 0.9rem;
-        transition: transform 0.3s;
-      }
-
-      .footer__links li:hover {
-        transform: translateX(5px);
-      }
-
-      .footer__links span {
-        font-size: 1.2rem;
-        margin-right: 0.7rem;
-        vertical-align: middle;
-        color: var(--golden); /* Altın rengi */
-      }
-      .footer h4 {
-        margin-bottom: 1.2rem;
-        font-size: 1.3rem;
-        color: var(--golden); /* Altın rengi */
-      }
-      .footer__links h5 {
-        font-size: 1.05rem;
-        font-weight: 600;
-        margin-bottom: 0.3rem;
-        color: var(--golden); /* Altın rengi */
-      }
-
-      .footer__links a {
-        color: rgba(255, 255, 255, 0.8);
-        transition: color 0.3s;
-      }
-
-      .footer__links a:hover {
-        color: var(--golden); /* Altın rengi */
-      }
-
-      .footer__bar {
-        text-align: center;
-        font-size: 0.9rem;
-        padding: 1.5rem 1rem;
-        border-top: 1px solid rgba(212, 175, 55, 0.2); /* Altın rengi opak */
-        color: rgba(255, 255, 255, 0.6);
-        letter-spacing: 0.5px;
-      }
-
-      /* Mobile Menu */
-      @media (max-width: 900px) {
-        .about__container {
-          grid-template-columns: 1fr;
-          gap: 1.3rem;
-        }
-        .about__image,
-        .about__card {
-          margin: 0.7rem 0;
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Hotel",
+        "name": "Yörgüç Paşa Konağı",
+        "description": "Amasya'nın tarihi dokusunda lüks konaklama deneyimi sunan butik otel",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Hatuniye, Derya Sk. No:13",
+          "addressLocality": "Amasya",
+          "addressRegion": "Merkez",
+          "postalCode": "05000",
+          "addressCountry": "TR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "40.6532",
+          "longitude": "35.8330"
+        },
+        "telephone": "+905519081005",
+        "priceRange": "₺1750-₺6500",
+        "image": "https://www.yorgucpasakonagi.com/assets/header.png",
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "WiFi" },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Air conditioning"
+          },
+          { "@type": "LocationFeatureSpecification", "name": "Kitchen" }
+        ],
+        "starRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
         }
       }
-      @media (max-width: 768px) {
-        .nav__links {
-          position: fixed;
-          top: 78px;
-          left: -100vw;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(255, 255, 255, 0.98);
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 2.5rem;
-          z-index: 99;
-          transition: left 0.4s cubic-bezier(0.61, 0.23, 0.45, 1.01);
-        }
-        .nav__links.active {
-          left: 0;
-        }
-        .nav__menu__btn {
-          display: block;
-        }
-        .nav__container {
-          padding: 1.2rem 1rem;
-        }
-        .section__header {
-          font-size: 2rem;
-        }
-        .room__card__details {
-          padding: 1.2rem;
-        }
-        .room__card__details p {
-          min-height: unset;
-        }
-        .room__grid {
-          gap: 1.2rem;
-        }
-      }
-      @media (max-width: 530px) {
-        .section__header {
-          font-size: 2rem;
-        }
-        .nav__container {
-          padding: 1.2rem 0.5rem;
-        }
-      }
-
-      @keyframes fade-in-up {
-        0% {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        100% {
-          opacity: 1;
-          transform: none;
-        }
-      }
-    </style>
+    </script>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <nav id="navbar">
