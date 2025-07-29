@@ -535,6 +535,9 @@ nav {
   .feature__grid {
     grid-template-columns: 1fr;
   }
+  .menu__images {
+    display: none !important;
+  }
 }
 /* Kartlara geliş animasyonu */
 .feature__card {
@@ -946,7 +949,8 @@ nav {
   object-fit: cover;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-
+  margin: 2rem auto 1rem auto;
+  cursor: pointer;
 }
 .btn a {
   color: var(--white);
